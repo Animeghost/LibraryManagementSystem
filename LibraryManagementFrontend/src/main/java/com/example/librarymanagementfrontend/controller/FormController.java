@@ -125,16 +125,19 @@ public class FormController implements Initializable {
     }
 
     @FXML
-    void bookSearch(MouseEvent event) {
-
+    void bookSearch(MouseEvent event) throws IOException {
+        List<Book> allBooks = bookService.getBookBySearch(searchField.getText());
+        listOfBooks.setAll(FXCollections.observableArrayList(allBooks));
+        System.out.println(allBooks);
     }
 
     @FXML
-    void clearForm(MouseEvent event) {
+    void clearForm(MouseEvent event) throws IOException {
         isbnField.clear();
         titleField.clear();
         authorField.clear();
         datePublishedField.setValue(null);
+        loadAllBooks();
     }
 
     @FXML
@@ -159,7 +162,7 @@ public class FormController implements Initializable {
     }
 
     @FXML
-    void cancelEdit(MouseEvent event) {
+    void cancelEdit(MouseEvent event) throws IOException {
         bookTableView.setDisable(false);
         createButtons.setVisible(true);
         removeButtons.setVisible(true);

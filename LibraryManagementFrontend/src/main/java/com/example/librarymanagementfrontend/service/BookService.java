@@ -29,6 +29,16 @@ public class BookService {
         }
     }
 
+    public List<Book> getBookBySearch(String searchParameter) throws IOException {
+        HttpResponse response = httpClient.get("books/search/?name=" +searchParameter );
+
+        if (response.isSuccess()) {
+            return JsonUtil.fromJsonList(response.getBody(), Book.class);
+        } else {
+            throw new IOException("Failed to get book like "+searchParameter+": " + response.getStatusCode());
+        }
+    }
+
     public Book getBookById(Long bookId) throws IOException {
         HttpResponse response = httpClient.get("books/" + bookId);
 

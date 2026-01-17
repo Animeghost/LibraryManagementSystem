@@ -3,7 +3,6 @@ package com.example.libraryManagementSystem.controller;
 import com.example.libraryManagementSystem.entity.Books;
 import com.example.libraryManagementSystem.service.BookService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -35,7 +35,8 @@ public class BookController {
     }
 
     @GetMapping("/search/")
-    public ResponseEntity<List<Books>> getBookBySearch(@Param("name") String searchParameter){
+    public ResponseEntity<List<Books>> getBookBySearch(@RequestParam("name") String searchParameter){
+        System.out.println(searchParameter);
         return new ResponseEntity<>(bookService.searchBooks(searchParameter),HttpStatus.OK);
     }
 
