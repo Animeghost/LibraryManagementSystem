@@ -34,7 +34,7 @@ public class BookController {
         return new ResponseEntity<>(bookService.getBookById(bookId),HttpStatus.OK);
     }
 
-    @GetMapping("/")
+    @GetMapping("/search/")
     public ResponseEntity<List<Books>> getBookBySearch(@Param("name") String searchParameter){
         return new ResponseEntity<>(bookService.searchBooks(searchParameter),HttpStatus.OK);
     }

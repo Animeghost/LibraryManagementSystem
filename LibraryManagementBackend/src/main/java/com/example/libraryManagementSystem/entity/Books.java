@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
+
 
 @Entity
 @Setter
@@ -23,6 +25,6 @@ public class Books {
     private String title;
     private String isbn;
     private String author;
-    private String publishedDate;
+    private LocalDate publishedDate;
 
 }

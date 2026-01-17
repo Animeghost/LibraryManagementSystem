@@ -42,7 +42,7 @@ public class FormController implements Initializable {
     private DatePicker datePublishedField;
 
     @FXML
-    private TableColumn<Book,String > datePublishedColumn;
+    private TableColumn<Book,LocalDate> datePublishedColumn;
 
     @FXML
     private Button deleteBtn;
@@ -89,7 +89,7 @@ public class FormController implements Initializable {
         isbnColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("isbn"));
         authorColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("author"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("title"));
-        datePublishedColumn.setCellValueFactory(new PropertyValueFactory<Book,String>("publishedDate"));
+        datePublishedColumn.setCellValueFactory(new PropertyValueFactory<Book,LocalDate>("publishedDate"));
 
         bookTableView.setItems(listOfBooks);
 
@@ -114,9 +114,7 @@ public class FormController implements Initializable {
         book.setIsbn(isbnField.getText());
         book.setAuthor(authorField.getText());
         book.setTitle(titleField.getText());
-        book.setPublishedDate(datePublishedField.getValue() != null
-                ? datePublishedField.getValue().toString()
-                : null);
+        book.setPublishedDate(datePublishedField.getValue());
         return book;
     }
 
@@ -156,7 +154,7 @@ public class FormController implements Initializable {
         isbnField.setText(selectedBook.getIsbn());
         titleField.setText(selectedBook.getTitle());
         authorField.setText(selectedBook.getAuthor());
-//        datePublishedField.setValue((LocalDate) selectedBook.getPublishedDate());
+        datePublishedField.setValue(selectedBook.getPublishedDate());
         bookTableView.setDisable(true);
     }
 
