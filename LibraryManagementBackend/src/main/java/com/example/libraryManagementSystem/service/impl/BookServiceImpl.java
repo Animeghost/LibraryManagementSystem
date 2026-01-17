@@ -55,7 +55,7 @@ public class BookServiceImpl implements BookService {
         if (!updatedBook.getTitle().isEmpty()){
             existingBook.setTitle(updatedBook.getTitle());
         }
-        if (!updatedBook.getPublishedDate().isEmpty()){
+        if (updatedBook.getPublishedDate() != null){
             existingBook.setPublishedDate(updatedBook.getPublishedDate());
         }
 

@@ -8,7 +8,7 @@ public class Book {
     private String title;
     private String author;
     private String isbn;
-    private String publishedDate;
+    private LocalDate publishedDate;
 
     public Book() {
     }
@@ -50,11 +50,11 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public String getPublishedDate() {
+    public LocalDate getPublishedDate() {
         return publishedDate;
     }
 
-    public void setPublishedDate(String publishedDate) {
+    public void setPublishedDate(LocalDate publishedDate) {
         this.publishedDate = publishedDate;
     }
 
